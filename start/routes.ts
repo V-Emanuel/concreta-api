@@ -7,10 +7,16 @@
 |
 */
 
-import router from '@adonisjs/core/services/router'
+import UsersController from "#controllers/users_controller";
+import router from "@adonisjs/core/services/router";
 
-router.get('/', async () => {
+router.get("/", async () => {
   return {
-    hello: 'world',
-  }
-})
+    hello: "world",
+  };
+});
+
+router.get("/users", [UsersController, "index"]);
+router.post("/users", [UsersController, "store"]);
+router.put("/users", [UsersController, "update"]);
+router.delete("/users", [UsersController, "destroy"]);
