@@ -9,6 +9,13 @@ export default class UsersController {
     return users;
   }
 
+  async show({ request }: HttpContext) {
+    const userId = request.param("id");
+    const user = await User.findOrFail(userId);
+
+    return user;
+  }
+
   async indexNoAdmins({}: HttpContext) {
     const users = await User.query().where("admin", "0");
 
@@ -16,7 +23,7 @@ export default class UsersController {
   }
 
   async store({ request }: HttpContext) {
-    const body = request.body;
+    const body = request.all();
     const userValidate = await userValidator.validate(body);
     const user = User.create(userValidate);
 
@@ -25,7 +32,7 @@ export default class UsersController {
 
   async update({ request }: HttpContext) {
     const userId = request.param("id");
-    const body = request.body;
+    const body = request.all();
     const user = await User.findOrFail(userId);
 
     await user.merge(body).save();
