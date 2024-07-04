@@ -41,4 +41,4 @@ router.delete("/category/:id", [CategoriesController, "destroy"]);
 router.get("/service", [CustomerServicesController, "index"]);
 router.post("/service", [CustomerServicesController, "store"]);
 router.put("/service/:id", [CustomerServicesController, "update"]);
-router.delete("/service", [CustomerServicesController, "destroy"]);
+router.delete("/service/:id", [CustomerServicesController, "destroy"]);
