@@ -9,6 +9,7 @@
 
 import CategoriesController from "#controllers/categories_controller";
 import CitiesController from "#controllers/cities_controller";
+import CustomerServicesController from "#controllers/customer_services_controller";
 import SessionController from "#controllers/session_controller";
 import UsersController from "#controllers/users_controller";
 import router from "@adonisjs/core/services/router";
@@ -36,3 +37,8 @@ router.get("/category", [CategoriesController, "index"]);
 router.get("/category/:id", [CategoriesController, "show"]);
 router.post("/category", [CategoriesController, "store"]);
 router.delete("/category/:id", [CategoriesController, "destroy"]);
+
+router.get("/service", [CustomerServicesController, "index"]);
+router.post("/service", [CustomerServicesController, "store"]);
+router.put("/service/:id", [CustomerServicesController, "update"]);
+router.delete("/service", [CustomerServicesController, "destroy"]);
