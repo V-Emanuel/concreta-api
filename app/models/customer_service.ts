@@ -1,8 +1,8 @@
 import { DateTime } from "luxon";
 import { BaseModel, belongsTo, column } from "@adonisjs/lucid/orm";
 import City from "./city.js";
-import { BelongsTo } from "@adonisjs/lucid/types/relations";
 import Category from "./category.js";
+import type { BelongsTo } from "@adonisjs/lucid/types/relations";
 
 export default class CustomerService extends BaseModel {
   @column({ isPrimary: true })
@@ -20,11 +20,11 @@ export default class CustomerService extends BaseModel {
   @column()
   declare cityId: number;
 
-  @belongsTo(() => City)
-  declare city: BelongsTo<typeof City>;
-
   @column()
   declare categoryId: number;
+
+  @belongsTo(() => City)
+  declare city: BelongsTo<typeof City>;
 
   @belongsTo(() => Category)
   declare category: BelongsTo<typeof Category>;

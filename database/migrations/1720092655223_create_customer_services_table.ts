@@ -9,8 +9,8 @@ export default class extends BaseSchema {
       table.string("name").notNullable();
       table.string("phone").notNullable();
       table.string("text").notNullable();
-      table.integer("city_id").unsigned().references("city.id");
-      table.integer("category_id").unsigned().references("category.id");
+      table.integer("city_id").unsigned().references("cities.id");
+      table.integer("category_id").unsigned().references("categories.id");
 
       table.timestamp("created_at");
       table.timestamp("updated_at");
